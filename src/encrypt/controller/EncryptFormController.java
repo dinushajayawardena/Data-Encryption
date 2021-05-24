@@ -3,19 +3,27 @@ package encrypt.controller;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
+import java.util.Arrays;
+import java.util.Timer;
+
 
 public class EncryptFormController {
     public Label lblOutput;
     public Button btnConvert;
     public TextField txtInput;
     public TextField txtKey;
+    public Button btnEncrypt;
+    public TextField txtEncryptedText;
 
-    public void initialize(){
+    public void initialize() throws InterruptedException {
+
+        Thread.sleep(500);
         txtInput.requestFocus();
     }
 
     public void btnConvert_OnAction(ActionEvent actionEvent) {
 
+/*
         lblOutput.setText("");
 
         String text = txtInput.getText();
@@ -32,7 +40,7 @@ public class EncryptFormController {
             return;
         }
 
-        text = text.trim() + key.trim();
+        text = text + key;
         String reversedText="";
         //System.out.println(text);
 
@@ -50,7 +58,39 @@ public class EncryptFormController {
             ciperText += newChar;
         }
 
-        lblOutput.setText(lblOutput.getText()+ "  " + ciperText);
+        lblOutput.setText(lblOutput.getText()+ "  " + ciperText);*/
+    }
+
+    public void btnEncrypt_OnAction(ActionEvent actionEvent) {
+
+        String textToBeConverted = "";
+        String key;
+
+        textToBeConverted = txtInput.getText();
+        key = txtKey.getText();
+
+        if (textToBeConverted.trim().isEmpty()){
+            new Alert(Alert.AlertType.ERROR, "Please give a text convert.",ButtonType.OK).show();
+            return;
+        }
+
+        if (key.trim().isEmpty()){
+            new Alert(Alert.AlertType.ERROR, "Please give a Key.",ButtonType.OK).show();
+            return;
+        }
+
+        String even = "";
+        String odd = "";
+        for (int i = 0; i < textToBeConverted.length(); i++) {
+            if (i%2 == 0){
+                even += textToBeConverted.charAt(i);
+            }else {
+                odd += textToBeConverted.charAt(i);
+            }
+        }
+
+        String encryptedText = even + odd;
+        txtEncryptedText.setText(encryptedText);
 
     }
 }
