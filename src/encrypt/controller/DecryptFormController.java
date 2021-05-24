@@ -3,6 +3,8 @@ package encrypt.controller;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
+import java.util.Arrays;
+
 public class DecryptFormController {
     public Label lblOutput;
     public TextField txtInput;
@@ -67,6 +69,23 @@ public class DecryptFormController {
 
         System.out.println(even);
         System.out.println(odd);
+
+        int evenNode = 0;
+        int oddNode = 0;
+        String output = "";
+
+        for (int i = 0; i < convertedText.length; i++) {
+            if (i%2 == 0){
+                convertedText[i] = even.charAt(evenNode);
+                evenNode++;
+            }else {
+                convertedText[i] = odd.charAt(oddNode);
+                oddNode++;
+            }
+            output = output + convertedText[i];
+        }
+
+        txtDecryptedText.setText(output);
 
 
     }
