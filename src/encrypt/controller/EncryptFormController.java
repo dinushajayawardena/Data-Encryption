@@ -1,5 +1,6 @@
 package encrypt.controller;
 
+import encrypt.util.DEP7Crypto;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
@@ -70,7 +71,7 @@ public class EncryptFormController {
         key = txtKey.getText();
 
         if (textToBeConverted.trim().isEmpty()){
-            new Alert(Alert.AlertType.ERROR, "Please give a text convert.",ButtonType.OK).show();
+            new Alert(Alert.AlertType.ERROR, "Please give a text to convert.",ButtonType.OK).show();
             return;
         }
 
@@ -79,7 +80,7 @@ public class EncryptFormController {
             return;
         }
 
-        String even = "";
+/*        String even = "";
         String odd = "";
         for (int i = 0; i < textToBeConverted.length(); i++) {
             if (i%2 == 0){
@@ -107,9 +108,10 @@ public class EncryptFormController {
             ciperkey += newChar;
         }
 
-        ciperText += ciperkey;
+        ciperText += ciperkey;*/
 
-        txtEncryptedText.setText(ciperText);
+
+        txtEncryptedText.setText(DEP7Crypto.encrypt(textToBeConverted, key));
 
     }
 }

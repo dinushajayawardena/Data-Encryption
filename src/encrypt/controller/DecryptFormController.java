@@ -53,6 +53,20 @@ public class DecryptFormController {
             return;
         }
 
+        int cuttingEdge = Math.abs(textToBeConverted.length()-key.length());
+        //System.out.println(cuttingEdge);
+        String textWithoutKey = "";
+        int hiddenKey = 0;
+
+        for (int i = cuttingEdge; i < textToBeConverted.length(); i++) {
+           hiddenKey = Character.getNumericValue(textToBeConverted.charAt(i)) - 10;
+
+        }
+
+        System.out.println(hiddenKey);
+
+
+
         char[] convertedText = new char[textToBeConverted.length()];
         String even = "";
         String odd = "";
@@ -67,8 +81,8 @@ public class DecryptFormController {
             odd += textToBeConverted.charAt(i);
         }
 
-        System.out.println(even);
-        System.out.println(odd);
+        //System.out.println(even);
+        //System.out.println(odd);
 
         int evenNode = 0;
         int oddNode = 0;
