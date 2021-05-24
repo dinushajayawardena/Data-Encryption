@@ -1,5 +1,6 @@
 package encrypt.controller;
 
+import encrypt.util.DEP7Crypto;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
@@ -53,7 +54,7 @@ public class DecryptFormController {
             return;
         }
 
-        int cuttingEdge = Math.abs(textToBeConverted.length()-key.length());
+        /*int cuttingEdge = Math.abs(textToBeConverted.length()-key.length());
         //System.out.println(cuttingEdge);
         String textWithoutKey = "";
         int hiddenKey = 0;
@@ -63,7 +64,7 @@ public class DecryptFormController {
 
         }
 
-        System.out.println(hiddenKey);
+       // System.out.println(hiddenKey);
 
 
 
@@ -97,9 +98,10 @@ public class DecryptFormController {
                 oddNode++;
             }
             output = output + convertedText[i];
-        }
+        }*/
 
-        txtDecryptedText.setText(output);
+
+        txtDecryptedText.setText(DEP7Crypto.decrypt(textToBeConverted, key));
 
 
     }
