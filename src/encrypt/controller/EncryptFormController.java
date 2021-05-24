@@ -90,7 +90,26 @@ public class EncryptFormController {
         }
 
         String encryptedText = even + odd;
-        txtEncryptedText.setText(encryptedText);
+        String ciperText = "";
+
+        for (int i = 0; i < encryptedText.length(); i++) {
+            int code = encryptedText.charAt(i);
+            code +=10;
+            char newChar = (char) code;
+            ciperText += newChar;
+        }
+
+        String ciperkey = "";
+        for (int i = 0; i < key.length(); i++) {
+            int code = key.charAt(i);
+            code +=10;
+            char newChar = (char) code;
+            ciperkey += newChar;
+        }
+
+        ciperText += ciperkey;
+
+        txtEncryptedText.setText(ciperText);
 
     }
 }
