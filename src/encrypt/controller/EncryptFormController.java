@@ -23,6 +23,16 @@ public class EncryptFormController {
 
     public void btnEncrypt_OnAction(ActionEvent actionEvent) {
 
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////ENCRYPTION ALGORITHM/////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Divide the entire input text into two parts by getting the index of each character and comparing even or odd
+        //get the even indexed part and at the end of that concatenate with the odd indexed part
+        //get the relevant ASCII value for each character and add CONST value (10) and generate new characters
+        //to make a relationship with the key,
+        // convereted the given key into integer codes
+        // divide each integer code into two parts. get the last digits( names as "suffix" ) and concatenate them together
+        // add the suffix to the end of the cipher text
 
 
 
@@ -41,18 +51,6 @@ public class EncryptFormController {
             new Alert(Alert.AlertType.ERROR, "Please give a Key.",ButtonType.OK).show();
             return;
         }
-
-
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////ENCRYPTION ALGORITHM/////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //Divide the entire input text into two parts by getting the index of each character and comparing even or odd
-        //get the even indexed part and at the end of that concatenate with the odd indexed part
-        //get the relevant ASCII value for each character and add CONST value (10) and generate new characters
-        //to make a relationship with the key,
-                // convereted the given key into integer codes
-                // divide each integer code into two parts. get the last digits( names as "suffix" ) and concatenate them together
-                // add the suffix to the end of the cipher text
 
         txtEncryptedText.setText(DEP7Crypto.encrypt(textToBeConverted, key));
 
