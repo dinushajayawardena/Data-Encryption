@@ -110,7 +110,6 @@ public class EncryptFormController {
 
         ciperText += ciperkey;*/
 
-
         txtEncryptedText.setText(DEP7Crypto.encrypt(textToBeConverted, key));
 
     }
