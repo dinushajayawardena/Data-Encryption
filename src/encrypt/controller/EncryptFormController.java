@@ -18,7 +18,7 @@ public class EncryptFormController {
 
     public void initialize() throws InterruptedException {
 
-        Thread.sleep(500);
+        //Thread.sleep(500);
         txtInput.requestFocus();
     }
 
