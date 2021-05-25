@@ -111,84 +111,7 @@ public class DEP7Crypto {
         String sufix = "";
         int index =0;
 
-        for (int i = (textToBeConverted.length() - key.length()); i < textToBeConverted.length(); i++) {
-            sufix += (char) textToBeConverted.charAt(i);
-            index++;
-        }
-        //System.out.println(sufix);
-
-        String encryptedText = "";
-
-        for (int i = 0; i < textToBeConverted.length()- key.length(); i++) {
-            encryptedText += textToBeConverted.charAt(i);
-        }
-
-       // System.out.println(encryptedText);
-
-
-        //char prefix;
-        int[] userInputKey = new int[key.length()];
-        String keyCheck = "";
-        for (int i = 0; i < key.length(); i++) {
-            int code = key.charAt(i);
-            //System.out.println(code);
-            userInputKey[i] = code % 10;
-            keyCheck += userInputKey[i];
-        }
-        //System.out.println(keyCheck);
-
-        ////////////////////////////////////////////////////////////////////
-
-
-        if (sufix.equals(keyCheck)){
-
-            char[] convertedText = new char[encryptedText.length()];
-            String even = "";
-            String odd = "";
-            int firstEnd = 0;
-
-            for (int i = 0; i < (encryptedText.length() + 1)/2; i++) {
-                even += encryptedText.charAt(i);
-                firstEnd = i;
-            }
-
-            for (int i = firstEnd +1 ; i < encryptedText.length() ; i++) {
-                odd += encryptedText.charAt(i);
-            }
-
-            //System.out.println(even);
-            //System.out.println(odd);
-
-            int evenNode = 0;
-            int oddNode = 0;
-            String output = "";
-
-            for (int i = 0; i < convertedText.length; i++) {
-                if (i%2 == 0){
-                    convertedText[i] = even.charAt(evenNode);
-                    evenNode++;
-                }else {
-                    convertedText[i] = odd.charAt(oddNode);
-                    oddNode++;
-                }
-                output = output + convertedText[i];
-            }
-
-            //System.out.println(output);
-
-            String decryptedText = "";
-            int code = 0;
-            for (int i = 0; i < output.length(); i++) {
-                code = output.charAt(i) - 10;
-                //System.out.println(code);
-                decryptedText = decryptedText + (char) code;
-                // System.out.println((char) code);
-            }
-            //System.out.println(decryptedText);
-
-            return decryptedText;
-
-        }else {
+        if (key.length() > textToBeConverted.length() ){
 
             byte[] array = new byte[7]; // length is bounded by 7
             new Random().nextBytes(array);
@@ -196,9 +119,96 @@ public class DEP7Crypto {
             //System.out.println(generatedString);
             return new String(array, StandardCharsets.UTF_8);
 
+        }else {
+
+            for (int i = (textToBeConverted.length() - key.length()); i < textToBeConverted.length(); i++) {
+                sufix += (char) textToBeConverted.charAt(i);
+                index++;
+            }
+            //System.out.println(sufix);
+
+            String encryptedText = "";
+
+            for (int i = 0; i < textToBeConverted.length() - key.length(); i++) {
+                encryptedText += textToBeConverted.charAt(i);
+            }
+
+            // System.out.println(encryptedText);
+
+
+            //char prefix;
+            int[] userInputKey = new int[key.length()];
+            String keyCheck = "";
+            for (int i = 0; i < key.length(); i++) {
+                int code = key.charAt(i);
+                //System.out.println(code);
+                userInputKey[i] = code % 10;
+                keyCheck += userInputKey[i];
+            }
+            //System.out.println(keyCheck);
+
+            ////////////////////////////////////////////////////////////////////
+
+
+            if (sufix.equals(keyCheck)) {
+
+                char[] convertedText = new char[encryptedText.length()];
+                String even = "";
+                String odd = "";
+                int firstEnd = 0;
+
+                for (int i = 0; i < (encryptedText.length() + 1) / 2; i++) {
+                    even += encryptedText.charAt(i);
+                    firstEnd = i;
+                }
+
+                for (int i = firstEnd + 1; i < encryptedText.length(); i++) {
+                    odd += encryptedText.charAt(i);
+                }
+
+                //System.out.println(even);
+                //System.out.println(odd);
+
+                int evenNode = 0;
+                int oddNode = 0;
+                String output = "";
+
+                for (int i = 0; i < convertedText.length; i++) {
+                    if (i % 2 == 0) {
+                        convertedText[i] = even.charAt(evenNode);
+                        evenNode++;
+                    } else {
+                        convertedText[i] = odd.charAt(oddNode);
+                        oddNode++;
+                    }
+                    output = output + convertedText[i];
+                }
+
+                //System.out.println(output);
+
+                String decryptedText = "";
+                int code = 0;
+                for (int i = 0; i < output.length(); i++) {
+                    code = output.charAt(i) - 10;
+                    //System.out.println(code);
+                    decryptedText = decryptedText + (char) code;
+                    // System.out.println((char) code);
+                }
+                //System.out.println(decryptedText);
+
+                return decryptedText;
+
+            } else {
+
+                byte[] array = new byte[7]; // length is bounded by 7
+                new Random().nextBytes(array);
+
+                //System.out.println(generatedString);
+                return new String(array, StandardCharsets.UTF_8);
+
+            }
+
         }
-
-
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////END OF DECRYPTION ALGORITHM//////////////////////////////////////////
