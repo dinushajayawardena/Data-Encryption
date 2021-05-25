@@ -15,7 +15,11 @@ public class DEP7Crypto {
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Divide the entire input text into two parts by getting the index of each character and comparing even or odd
         //get the even indexed part and at the end of that concatenate with the odd indexed part
-        //get the relevent ASCII value for each character and add CONST value (10) and generate new characters
+        //get the relevant ASCII value for each character and add CONST value (10) and generate new characters
+        //to make a relationship with the key,
+                // convereted the given key into integer codes
+                // divide each integer code into two parts. get the last digits( names as "suffix" ) and concatenate them together
+                // add the suffix to the end of the cipher text
 
 
         String even = "";
@@ -29,7 +33,7 @@ public class DEP7Crypto {
         }
 
         String encryptedText = even + odd;
-/////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////// adding the key as sufix
 
         int[] prefix = new int[key.length()];
         //char prefix;
@@ -45,7 +49,7 @@ public class DEP7Crypto {
         //System.out.println(Arrays.toString(prefix)+" "+ Arrays.toString(sufix));
 
 
-////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////// end of adding suffix
 
 
         String ciperText = "";
@@ -101,10 +105,16 @@ public class DEP7Crypto {
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////DECRYPTION ALGORITHM/////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //Divide the entire input text into two parts by getting the index of each character and comparing even or odd
-        //get the even indexed part and at the end of that concatenate with the odd indexed part
+        //get the Text, to be decrypted and get the suffix part of it
+        //compare the suffix part and decrypt key
+                    // if the key is matching with the suffix then,
+                        //Divide the entire input text into two parts by getting the index of each character and comparing even or odd
+                        //get the even indexed part and at the end of that concatenate with the odd indexed part
+                    //if not matching,
+                        // generate random string ..
 
         /////////////////////////////////////////////////////////////////////
+
 
         int[] prefix = new int[key.length()];
         //int[] sufix = new int[key.length()];

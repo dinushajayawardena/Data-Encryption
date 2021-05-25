@@ -10,7 +10,6 @@ import java.util.Timer;
 
 public class EncryptFormController {
     public Label lblOutput;
-    public Button btnConvert;
     public TextField txtInput;
     public TextField txtKey;
     public Button btnEncrypt;
@@ -22,47 +21,10 @@ public class EncryptFormController {
         txtInput.requestFocus();
     }
 
-    public void btnConvert_OnAction(ActionEvent actionEvent) {
-
-/*
-        lblOutput.setText("");
-
-        String text = txtInput.getText();
-        String key = txtKey.getText();
-
-        if (text.trim().isEmpty()){
-            new Alert(Alert.AlertType.ERROR, "Invalid text...", ButtonType.CANCEL).show();
-            txtInput.requestFocus();
-            return;
-        }
-        if (key.trim().isEmpty()){
-            new Alert(Alert.AlertType.ERROR, "Invalid Key..",ButtonType.OK).show();
-            txtKey.requestFocus();
-            return;
-        }
-
-        text = text + key;
-        String reversedText="";
-        //System.out.println(text);
-
-        for (int i = text.length()-1; i >=0; i--) {
-            reversedText += text.charAt(i);
-        }
-
-        //System.out.println(reversedText);
-
-        String ciperText = "";
-        for (int i = 0; i < reversedText.length(); i++) {
-            int code = reversedText.charAt(i);
-            code = code + 10;
-            char newChar = (char) code;
-            ciperText += newChar;
-        }
-
-        lblOutput.setText(lblOutput.getText()+ "  " + ciperText);*/
-    }
-
     public void btnEncrypt_OnAction(ActionEvent actionEvent) {
+
+
+
 
         String textToBeConverted = "";
         String key;
@@ -80,35 +42,17 @@ public class EncryptFormController {
             return;
         }
 
-/*        String even = "";
-        String odd = "";
-        for (int i = 0; i < textToBeConverted.length(); i++) {
-            if (i%2 == 0){
-                even += textToBeConverted.charAt(i);
-            }else {
-                odd += textToBeConverted.charAt(i);
-            }
-        }
 
-        String encryptedText = even + odd;
-        String ciperText = "";
-
-        for (int i = 0; i < encryptedText.length(); i++) {
-            int code = encryptedText.charAt(i);
-            code +=10;
-            char newChar = (char) code;
-            ciperText += newChar;
-        }
-
-        String ciperkey = "";
-        for (int i = 0; i < key.length(); i++) {
-            int code = key.charAt(i);
-            code +=10;
-            char newChar = (char) code;
-            ciperkey += newChar;
-        }
-
-        ciperText += ciperkey;*/
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////ENCRYPTION ALGORITHM/////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Divide the entire input text into two parts by getting the index of each character and comparing even or odd
+        //get the even indexed part and at the end of that concatenate with the odd indexed part
+        //get the relevant ASCII value for each character and add CONST value (10) and generate new characters
+        //to make a relationship with the key,
+                // convereted the given key into integer codes
+                // divide each integer code into two parts. get the last digits( names as "suffix" ) and concatenate them together
+                // add the suffix to the end of the cipher text
 
         txtEncryptedText.setText(DEP7Crypto.encrypt(textToBeConverted, key));
 

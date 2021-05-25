@@ -7,34 +7,11 @@ import javafx.scene.control.*;
 import java.util.Arrays;
 
 public class DecryptFormController {
-    public Label lblOutput;
     public TextField txtInput;
     public TextField txtKey;
     public Button btnDecrypt;
     public TextField txtDecryptedText;
 
-/*    public void btnConvert_OnAction(ActionEvent actionEvent) {
-
-        *//*lblOutput.setText("");
-
-        String text = txtInput.getText();
-        String key = txtKey.getText();
-        String cipertext = "";
-
-        if (text.trim().isEmpty()){
-            new Alert(Alert.AlertType.ERROR, "Invalid text...", ButtonType.CANCEL).show();
-            txtInput.requestFocus();
-            return;
-        }
-        if (key.trim().isEmpty()){
-            new Alert(Alert.AlertType.ERROR, "Invalid Key..",ButtonType.OK).show();
-            txtKey.requestFocus();
-            return;
-        }
-
-    //    lblOutput.setText(lblOutput.getText()+ "  " + originalText);*//*
-
-    }*/
 
     public void btnDecrypt_OnAction(ActionEvent actionEvent) {
 
@@ -54,51 +31,20 @@ public class DecryptFormController {
             return;
         }
 
-        /*int cuttingEdge = Math.abs(textToBeConverted.length()-key.length());
-        //System.out.println(cuttingEdge);
-        String textWithoutKey = "";
-        int hiddenKey = 0;
-
-        for (int i = cuttingEdge; i < textToBeConverted.length(); i++) {
-           hiddenKey = Character.getNumericValue(textToBeConverted.charAt(i)) - 10;
-
-        }
-
-       // System.out.println(hiddenKey);
 
 
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////DECRYPTION ALGORITHM/////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //get the Text, to be decrypted and get the suffix part of it
+        //compare the suffix part and decrypt key
+        // if the key is matching with the suffix then,
+        //Divide the entire input text into two parts by getting the index of each character and comparing even or odd
+        //get the even indexed part and at the end of that concatenate with the odd indexed part
+        //if not matching,
+        // generate random string ..
 
-        char[] convertedText = new char[textToBeConverted.length()];
-        String even = "";
-        String odd = "";
-        int firstEnd = 0;
-
-        for (int i = 0; i < (textToBeConverted.length() + 1)/2; i++) {
-            even += textToBeConverted.charAt(i);
-            firstEnd = i;
-        }
-
-        for (int i = firstEnd +1 ; i < textToBeConverted.length() ; i++) {
-            odd += textToBeConverted.charAt(i);
-        }
-
-        //System.out.println(even);
-        //System.out.println(odd);
-
-        int evenNode = 0;
-        int oddNode = 0;
-        String output = "";
-
-        for (int i = 0; i < convertedText.length; i++) {
-            if (i%2 == 0){
-                convertedText[i] = even.charAt(evenNode);
-                evenNode++;
-            }else {
-                convertedText[i] = odd.charAt(oddNode);
-                oddNode++;
-            }
-            output = output + convertedText[i];
-        }*/
+        /////////////////////////////////////////////////////////////////////
 
 
         txtDecryptedText.setText(DEP7Crypto.decrypt(textToBeConverted, key));
