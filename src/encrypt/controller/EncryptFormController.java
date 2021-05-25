@@ -1,8 +1,8 @@
 package encrypt.controller;
 
-import encrypt.util.DEP7Crypto;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import lk.ijse.crypto.DEP7Crypto;
 
 import java.util.Arrays;
 import java.util.Timer;
